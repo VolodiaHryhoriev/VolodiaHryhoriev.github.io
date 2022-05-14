@@ -1,0 +1,49 @@
+.container {
+
+}
+
+.blockHeader {
+    border-bottom: 3px solid black;
+    padding-bottom: 15px;
+}
+
+.main {
+
+}
+
+.profileLogo {
+    width: 200px;
+    height: 200px;
+}
+
+.skills {
+    background-color: #16c1ee;
+}
+
+.skillsIcons {
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+ }
+
+.skillsIcons div {
+    width: 33%;
+}
+
+.iconElement {
+    font-size: 50px;
+}
+
+.aboutMe {
+
+}
+
+.contact {
+
+}
+
+.footer {
+
+}
