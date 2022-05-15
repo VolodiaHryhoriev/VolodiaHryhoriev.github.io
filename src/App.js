@@ -10,16 +10,26 @@ import {
 import { RouteConst } from "./common/RouteConst";
 import { Provider } from "react-redux";
 import CV from "./pages/CV"
-import Header from "./components/Header/Header"
+import MyNavbar from "./components/Navbar/MyNavbar"
+import {Login} from "./components/login/login"
 
 function App() {
     const path = useLocation().pathname;
+    const showNavbar = () => {
+        switch (path) {
+            case RouteConst.CV:
+                return true;
+            default:
+                return false;
+        }
+    };
+
   return (
     <div className="App">
-        <Header />
+        {showNavbar() && <MyNavbar />}
         <Routes>
             <Route path={RouteConst.CV} element={<CV />} />
-            {/*<Route path={RouteConst.LOGIN} element={} />*/}
+            <Route path={RouteConst.LOGIN} element={<Login />} />
         </Routes>
     </div>
   );

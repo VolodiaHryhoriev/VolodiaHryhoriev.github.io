@@ -3,6 +3,9 @@ import profileImg from "./../images/profileImg.jpg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCode } from "@fortawesome/free-solid-svg-icons";
 import { faHtml5, faCss3Alt, faReact, faGithub, faBootstrap } from '@fortawesome/free-brands-svg-icons'
+import {instanceForm} from "../components/RSUITE components/rsuiteComp";
+import {Form} from "rsuite";
+import "rsuite/dist/rsuite.min.css";
 
 const CV = () => {
     return (
@@ -24,10 +27,19 @@ const CV = () => {
                 </div>
             </div>
             <div className={styles.aboutMe}>
-                <h1 className={styles.blockHeader}>About me</h1>
+                <h1>A<span className={styles.blockHeader}>bout m</span>e</h1>
             </div>
-            <div className={styles.contact}></div>
-            <div className={styles.footer}></div>
+            <div className={styles.contact}>
+                <h1>C<span className={styles.blockHeader}>ontac</span>t</h1>
+                <Form>
+                    <Form.Group>
+                        {instanceForm}
+                    </Form.Group>
+                </Form>
+            </div>
+            <div className={styles.footer}>
+
+            </div>
         </div>
     )
 }
