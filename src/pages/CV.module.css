@@ -22,20 +22,6 @@
     }
 }
 
-@media screen and (min-width: 426px) {
-    .main {
-        height: 1500px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-    .experience {
-        width: 100px;
-        height: 100px;
-    }
-}
-
 .mainText {
     margin-top: 250px;
     display: flex;

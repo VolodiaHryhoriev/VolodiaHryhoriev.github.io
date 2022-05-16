@@ -37,7 +37,8 @@ const CV = () => {
                     </div>
                     <div className={styles.education}>
                         <h3>Education</h3>
-                        <p>Front-end Development(React/Redux/TypeScript/Firebase) in Logos IT Academy 2021-2022.</p>
+                        <p>Front-end Development <br/>
+                            (React / Redux / TypeScript / Firebase) in Logos IT Academy 2021-2022.</p>
                         <p>National University “Lviv Polytechnic” Incomplete higher education, Faculty of Transport Technology.</p>
                     </div>
                 </div>
