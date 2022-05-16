@@ -16,7 +16,7 @@ const CV = () => {
                 <div className={styles.mainText}>
                     <h4>Hello there,</h4>
                 <h1>I am <br/> Volodymyr Hryhoriev</h1>
-                    <h3><ReactTypingEffect text={"Front-end Developer."}/></h3>
+                    <p><ReactTypingEffect text={"Front-end Developer."}/></p>
                 </div>
                 <Tilt className="Tilt" options={{max: 20, scale: 1.01,}}><img src={profileImg} alt="profile Image" className={styles.profileLogo}/></Tilt>
             </div>

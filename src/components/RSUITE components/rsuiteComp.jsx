@@ -67,7 +67,8 @@ export function UsernameField() {
 
 
 export const instanceNavBut = (
-    <ButtonToolbar>
+    <div><ButtonToolbar>
         <Button appearance="ghost" color="cyan" disabled>Edit</Button>
-    </ButtonToolbar>
+    </ButtonToolbar></div>
+
 );
