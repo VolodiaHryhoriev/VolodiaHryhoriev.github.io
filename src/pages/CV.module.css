@@ -1,24 +1,72 @@
 .container {
-    background-color: black;
-    color: white;
+
 }
 
-.blockHeader {
-    border-bottom: 3px solid lightgreen;
+.textName {
+    border-bottom: 3px solid #3498FF;
     padding-bottom: 15px;
 }
 
 .main {
+    height: 1000px;
+    display: flex;
+    justify-content: space-around;
+}
 
+@media screen and (max-width: 650px) {
+    .main {
+        height: 1500px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.mainText {
+    margin-top: 250px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    letter-spacing: .15em;
+    width: 30%;
 }
 
 .profileLogo {
-    width: 200px;
-    height: 200px;
+    border-radius: 5%;
+    margin-top: 150px;
+    z-index: 1;
+}
+
+img {
+    width: 350px;
+    height: 500px;
+}
+
+@media screen and (max-width: 750px) {
+    img {
+        width: 300px;
+        height:400px;
+    }
+
+}
+
+.aboutMe {
+    background-color: lightgray;
+}
+
+.aboutMeBlock {
+    margin-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.info, .experience, .education {
+    width: 30%;
 }
 
 .skills {
-    background-color: lightseagreen;
+    padding: 50px;
 }
 
 .skillsIcons {
@@ -31,6 +79,7 @@
 
 .skillsIcons div {
     width: 30%;
+    padding: 30px;
 }
 
 .iconElement {
@@ -38,23 +87,25 @@
     padding: 10px;
 }
 
-.aboutMe {
-
-}
 
 .contact {
-    background-color: lightseagreen;
     padding: 50px;
+    background-color: lightgray;
 }
 
 Form {
     margin-top: 50px;
 }
 
-Form.Group {
-
-}
 
 .footer {
 
+}
+
+.footerIcons {
+    margin-top: 50px;
+}
+
+.footerIcons a {
+    color: black;
 }

@@ -10,7 +10,7 @@ import {
 import { RouteConst } from "./common/RouteConst";
 import { Provider } from "react-redux";
 import CV from "./pages/CV"
-import MyNavbar from "./components/Navbar/MyNavbar"
+import Header from "./components/Heaader/Header"
 import {Login} from "./components/login/login"
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
 
   return (
     <div className="App">
-        {showNavbar() && <MyNavbar />}
+        {showNavbar() && <Header />}
         <Routes>
             <Route path={RouteConst.CV} element={<CV />} />
             <Route path={RouteConst.LOGIN} element={<Login />} />

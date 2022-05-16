@@ -1,14 +1,11 @@
-import styles from "./MyNavbar.module.css";
+import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
 import { RouteConst } from "../../common/RouteConst";
-import {Navbar, Nav, Dropdown} from "rsuite";
 import "rsuite/dist/rsuite.min.css";
-import NavBarInstance from "rsuite/cjs/Navbar/NavbarBrand";
 import React from "react";
-import {instanceNavbar} from "../RSUITE components/rsuiteComp";
 
 
-const MyNavbar = () => {
+const Header = () => {
     return (
         <div>
             <nav>
@@ -23,7 +20,7 @@ const MyNavbar = () => {
                     About Me
                 </Link>
                 <Link className={styles.link} to={"#"}>
-                     Contact
+                    Contact
                 </Link>
                 </div>
                 <div className={styles.navRight}>
@@ -38,4 +35,4 @@ const MyNavbar = () => {
 
 }
 
-export default MyNavbar
+export default Header

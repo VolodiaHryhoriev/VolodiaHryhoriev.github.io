@@ -1,11 +1,11 @@
 // import CV from "./CV";
-// import Navbar from "../components/Navbar/Navbar";
+// import Heaader from "../components/Heaader/Heaader";
 //
 //
 // const VolodymyrHryhorievPage = () => {
 //  return (
 //      <div>
-//          <Navbar />
+//          <Heaader />
 //         <CV />
 //      </div>
 //  )

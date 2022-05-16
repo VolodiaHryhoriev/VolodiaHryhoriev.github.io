@@ -1,6 +1,4 @@
 import {Button, ButtonToolbar, Form, Input, Schema} from "rsuite";
-import { forwardRef } from "react";
-import {Navbar, Nav, Dropdown} from "rsuite";
 import React from "react";
 
 
@@ -12,6 +10,7 @@ export const model = Schema.Model({
 });
 
 export const instanceForm = (
+    <div>
     <Form>
         <Form.Group controlId="name">
             <Form.ControlLabel>Username</Form.ControlLabel>
@@ -38,6 +37,7 @@ export const instanceForm = (
             </ButtonToolbar>
         </Form.Group>
     </Form>
+    </div>
 );
 
 
@@ -45,20 +45,23 @@ export const instanceForm = (
 const nameRule = Schema.Types.StringType().isRequired('This field is required.');
 export function UsernameField() {
     return (
+        <div>
         <Form.Group controlId="name">
             <Form.ControlLabel>Username</Form.ControlLabel>
             <Form.Control name="name" rule={nameRule} />
         </Form.Group>
+        </div>
     );
 }
 
-const emailRule = Schema.Types.StringType().isEmail('Please enter a valid email address.');
- export function EmailField() {
+ export function PasswordField() {
     return (
-        <Form.Group controlId="email">
-            <Form.ControlLabel>Email</Form.ControlLabel>
-            <Form.Control name="email" rule={emailRule} />
+        <div>
+            <Form.Group controlId="password">
+            <Form.ControlLabel>Password</Form.ControlLabel>
+            <Form.Control name="password" type="password"/>
         </Form.Group>
+        </div>
     );
 }
 

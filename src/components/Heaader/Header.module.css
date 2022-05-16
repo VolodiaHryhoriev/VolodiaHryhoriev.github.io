@@ -1,5 +1,4 @@
 .container{
-    background-color: #16c1ee;
     height: 50px;
     display: flex;
     justify-content: space-evenly;
@@ -8,9 +7,19 @@
 
 nav {
     display: flex;
-    justify-content: space-around;
-    background-color: lightseagreen;
+    justify-content: space-between;
+    background-color: lightgray;
     width: 100%;
+    position: fixed;
+    top: 0;
+    opacity: 0.5;
+    color: black;
+    z-index: 2;
+}
+
+nav:hover {
+
+    opacity: 1;
 }
 
 .navLeft {
@@ -27,7 +36,7 @@ nav {
 .link, .logButt {
     padding: 5px;
     text-decoration: none;
-    color: white;
+    color: black;
 }
 
 .link:hover, .logButt:hover {
