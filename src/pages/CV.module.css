@@ -22,7 +22,7 @@
     }
 }
 
-@media screen and (max-width: 426px) {
+@media screen and (min-width: 426px) {
     .main {
         height: 1500px;
         display: flex;
