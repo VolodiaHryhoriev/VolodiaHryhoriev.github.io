@@ -18,7 +18,6 @@ nav {
 }
 
 nav:hover {
-
     opacity: 1;
 }
 
@@ -37,6 +36,10 @@ nav:hover {
     padding: 5px;
     text-decoration: none;
     color: black;
+}
+
+.logButt {
+    margin: 0 25px;
 }
 
 .link:hover, .logButt:hover {

@@ -32,7 +32,7 @@ const CV = () => {
                     </div>
                     <div className={styles.experience}>
                         <h3>Experience</h3>
-                        <p>React development using redux, react-redux, react-router-dom, redux-thunk and Axios. Bug fixing, refactoring into TypeScript,
+                        <p>React development using redux, react-redux, react-router-dom, redux-thunk Axios, React Suite. Bug fixing, refactoring into TypeScript,
                             login form creation using Firebase.</p>
                     </div>
                     <div className={styles.education}>

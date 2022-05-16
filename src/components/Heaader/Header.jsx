@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { RouteConst } from "../../common/RouteConst";
 import "rsuite/dist/rsuite.min.css";
 import React from "react";
+import {instanceNavBut} from "./../RSUITE components/rsuiteComp"
+import {ButtonToolbar} from "rsuite";
 
 
 const Header = () => {
@@ -24,6 +26,7 @@ const Header = () => {
                 </Link>
                 </div>
                 <div className={styles.navRight}>
+                    <ButtonToolbar>{instanceNavBut}</ButtonToolbar>
                 <Link className={styles.logButt} to={RouteConst.LOGIN}>
                     Login
                 </Link>
