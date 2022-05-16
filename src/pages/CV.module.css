@@ -13,6 +13,10 @@
     justify-content: space-around;
 }
 
+.main p {
+    font-size: 30px;
+}
+
 @media screen and (max-width: 650px) {
     .main {
         height: 1200px;

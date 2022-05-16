@@ -12,7 +12,7 @@ const Header = () => {
         <div>
             <nav>
                 <div className={styles.navLeft}>
-                    <Link className={styles.link} to={RouteConst.CV}>
+                    <Link className={styles.link} to={"#"}>
                         Home
                     </Link>
                 <Link className={styles.link} to={"#"}>

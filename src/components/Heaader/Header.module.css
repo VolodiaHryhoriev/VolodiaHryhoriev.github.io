@@ -15,6 +15,7 @@ nav {
     opacity: 0.5;
     color: black;
     z-index: 2;
+    white-space: nowrap;
 }
 
 nav:hover {
@@ -26,6 +27,7 @@ nav:hover {
     justify-content: space-evenly;
     width: 40%;
     margin: 0;
+    margin-left: 20px;
 }
 
 .navRight {

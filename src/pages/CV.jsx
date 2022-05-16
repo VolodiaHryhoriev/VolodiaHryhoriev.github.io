@@ -44,7 +44,7 @@ const CV = () => {
                 </div>
             </div>
 
-            <div className={styles.skills} >
+            <div id={"skills"} className={styles.skills} >
                 <h1>S<span className={styles.textName}>kill</span>s</h1>
                 <div className={styles.skillsIcons}>
                     <div><FontAwesomeIcon className={styles.iconElement} icon={faHtml5} /><h3>HTML5</h3></div>
@@ -70,6 +70,7 @@ const CV = () => {
                     <a href="https://github.com/VolodiaHryhoriev"><FontAwesomeIcon className={styles.iconElement} icon={faGithub} /></a>
                     <a href="https://www.facebook.com/profile.php?id=100011629595872"><FontAwesomeIcon className={styles.iconElement} icon={faFacebookF} /></a>
                 </div>
+                <p>@ 2022 All Rights Reserved</p>
             </div>
         </div>
     )
