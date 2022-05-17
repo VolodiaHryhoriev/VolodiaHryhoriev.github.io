@@ -50,7 +50,12 @@
         align-items: center;
         flex-direction: column;
     }
-
+    .aboutMeBlock {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 .mainText {
