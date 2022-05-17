@@ -26,8 +26,7 @@ nav:hover {
     display: flex;
     justify-content: space-evenly;
     width: 40%;
-    margin: 0;
-    margin-left: 20px;
+    margin-left: 40px;
 }
 
 .navRight {
