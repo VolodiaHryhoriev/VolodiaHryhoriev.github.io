@@ -56,6 +56,16 @@
         justify-content: center;
         align-items: center;
     }
+    .info, .experience, .education {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 25px;
+    }
+    .info p, .experience p, .education p {
+        width: 400px;
+        text-align: center;
+    }
 }
 
 .mainText {
