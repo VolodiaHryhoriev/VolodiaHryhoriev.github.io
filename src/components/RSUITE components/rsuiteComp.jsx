@@ -1,5 +1,7 @@
 import {Button, ButtonToolbar, Form, Input, Schema} from "rsuite";
 import React from "react";
+import {RouteConst} from "../../common/RouteConst";
+import {useLocation} from "react-router-dom";
 
 
 const Textarea = React.forwardRef((props, ref) => <Input {...props} as="textarea" ref={ref} />);
@@ -66,9 +68,3 @@ export function UsernameField() {
 }
 
 
-export const instanceNavBut = (
-    <div><ButtonToolbar>
-        <Button appearance="ghost" color="cyan" disabled>Edit</Button>
-    </ButtonToolbar></div>
-
-);

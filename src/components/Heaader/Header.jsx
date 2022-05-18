@@ -1,13 +1,75 @@
 import styles from "./Header.module.css";
 import { RouteConst } from "../../common/RouteConst";
 import "rsuite/dist/rsuite.min.css";
-import React from "react";
-import {instanceNavBut} from "./../RSUITE components/rsuiteComp"
-import {ButtonToolbar} from "rsuite";
-import {Link as Link1, Element, Events, animateScroll as scroll, scrollSpy, scroller} from 'react-scroll';
-import {Link as Link2} from "react-router-dom"
+import React, {useState} from "react";
+import {Button, ButtonToolbar, Toggle} from "rsuite";
+import {Link as Link1} from 'react-scroll';
+import {Link as Link2, useLocation} from "react-router-dom"
 
 const Header = () => {
+    const path = useLocation().pathname;
+    const showEditBut = () => {
+        switch (path) {
+            case RouteConst.ADMIN:
+                return true;
+            default:
+                return false;
+        }
+    };
+
+    const instanceNavBut = (
+        <div>
+           Edit Mode <Toggle onClick={toggleBut} />
+        </div>
+    );
+
+ // const toggleEdit = () => {
+     // if (document.querySelectorAll(".editableText")[0].contentEditable === true) {
+     //     return false
+     // } else {
+     //     return true
+     // }
+     // switch () {
+     //    case
+     // }
+ // }
+    const [toggle, setToggle] = useState({
+        isEditable: true,
+    })
+    function toggleBut () {
+        setToggle({
+            isEditable: !toggle.isEditable
+        })
+        let editField = document.querySelectorAll(".editableText");
+         console.log(toggle.isEditable)
+        return editField.forEach(element => element.contentEditable = toggle.isEditable )
+        // toggle
+        // console.log(editField)
+        // editField.forEach(element => console.log(element.contentEditable ) )
+        // editField.forEach(element => {
+        //     if(element.contentEditable) {
+        //         console.log('element is editable')
+        //         element.contentEditable = true;
+        // }
+        //     else {
+        //         console.log('element isnt editable')
+        //         element.contentEditable = false;
+        // }
+        // })
+            // ?  console.log(true) : console.log(false) )
+        // if (editField.forEach(element => element.contentEditable === false)) {
+        //     console.log('element')
+        //      editField.forEach(element => element.contentEditable = true)
+        // } else {
+        //     console.log('else');
+        //     document.querySelectorAll(".editableText").forEach(element => element.contentEditable = false)
+        // }
+        // document.querySelectorAll(".editableText").forEach(element =>  console.log(element.contentEditable))
+        // console.log(document.querySelectorAll(".editableText").forEach(element => element.contentEditable === true ? true : false))
+        // document.querySelectorAll(".editableText").forEach(element =>  console.log(element.contentEditable))
+        // === true ? console.log('first') : console.log("second"))
+    }
+
     return (
         <div>
             <nav>
@@ -42,7 +104,7 @@ const Header = () => {
                 </Link1>
                 </div>
                 <div className={styles.navRight}>
-                    <ButtonToolbar>{instanceNavBut}</ButtonToolbar>
+                    {showEditBut() && instanceNavBut}
                 <Link2 className={styles.logButt} to={RouteConst.LOGIN}>
                     Login
                 </Link2>

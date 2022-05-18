@@ -155,3 +155,7 @@ Form {
 .footerIcons a {
     color: black;
 }
+
+.editableText {
+    text-decoration: none;
+}
