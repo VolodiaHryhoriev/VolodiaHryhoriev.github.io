@@ -26,11 +26,16 @@ nav:hover {
     display: flex;
     justify-content: space-evenly;
     width: 40%;
-    margin-left: 40px;
+    margin-left: 20px;
 }
 
 .navRight {
     display: flex;
+}
+
+.editMode {
+    display: flex;
+    align-items: center;
 }
 
 .link, .logButt {

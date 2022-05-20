@@ -21,10 +21,6 @@ export const instanceForm = (
             <Form.Control name="email" type="email" />
             <Form.HelpText tooltip>Email is required</Form.HelpText>
         </Form.Group>
-        <Form.Group controlId="password">
-            <Form.ControlLabel>Password</Form.ControlLabel>
-            <Form.Control name="password" type="password" autoComplete="off" />
-        </Form.Group>
         <Form.Group controlId="textarea">
             <Form.ControlLabel>Textarea</Form.ControlLabel>
             <Form.Control rows={5} name="textarea" accepter={Textarea} />

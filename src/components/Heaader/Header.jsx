@@ -18,8 +18,8 @@ const Header = () => {
     };
 
     const instanceNavBut = (
-        <div>
-           Edit Mode <Toggle onClick={toggleBut} />
+        <div className={styles.editMode}>
+           <p>Edit</p> <Toggle onClick={toggleBut} />
         </div>
     );
 
@@ -58,7 +58,7 @@ const Header = () => {
                       smooth={true}
                       offset={1}
                       duration={500}>
-                    About Me
+                    About
                 </Link1>
                 <Link1 className={styles.link} to="contact"
                       spy={true}
