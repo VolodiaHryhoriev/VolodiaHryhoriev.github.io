@@ -23,16 +23,6 @@ const Header = () => {
         </div>
     );
 
- // const toggleEdit = () => {
-     // if (document.querySelectorAll(".editableText")[0].contentEditable === true) {
-     //     return false
-     // } else {
-     //     return true
-     // }
-     // switch () {
-     //    case
-     // }
- // }
     const [toggle, setToggle] = useState({
         isEditable: true,
     })
@@ -43,31 +33,6 @@ const Header = () => {
         let editField = document.querySelectorAll(".editableText");
          console.log(toggle.isEditable)
         return editField.forEach(element => element.contentEditable = toggle.isEditable )
-        // toggle
-        // console.log(editField)
-        // editField.forEach(element => console.log(element.contentEditable ) )
-        // editField.forEach(element => {
-        //     if(element.contentEditable) {
-        //         console.log('element is editable')
-        //         element.contentEditable = true;
-        // }
-        //     else {
-        //         console.log('element isnt editable')
-        //         element.contentEditable = false;
-        // }
-        // })
-            // ?  console.log(true) : console.log(false) )
-        // if (editField.forEach(element => element.contentEditable === false)) {
-        //     console.log('element')
-        //      editField.forEach(element => element.contentEditable = true)
-        // } else {
-        //     console.log('else');
-        //     document.querySelectorAll(".editableText").forEach(element => element.contentEditable = false)
-        // }
-        // document.querySelectorAll(".editableText").forEach(element =>  console.log(element.contentEditable))
-        // console.log(document.querySelectorAll(".editableText").forEach(element => element.contentEditable === true ? true : false))
-        // document.querySelectorAll(".editableText").forEach(element =>  console.log(element.contentEditable))
-        // === true ? console.log('first') : console.log("second"))
     }
 
     return (

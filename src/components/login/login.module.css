@@ -25,3 +25,9 @@ h3  {
 .loginButton {
     margin-top: 20px;
 }
+
+.incorrect {
+    display: none;
+    padding-top: 15px;
+    color: red;
+}

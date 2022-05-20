@@ -4,7 +4,7 @@ import {
     Routes,
     Route,
     Navigate,
-    useLocation, Link as Link2,
+    useLocation,
 } from "react-router-dom";
 import { RouteConst } from "./common/RouteConst";
 import { Provider } from "react-redux";
@@ -12,9 +12,8 @@ import CV from "./components/CV/CV"
 import Header from "./components/Heaader/Header"
 import Admin from "./components/admin/Admin"
 import {Login} from "./components/login/login"
-import {instanceNavBut} from "./components/RSUITE components/rsuiteComp";
-import {ButtonToolbar} from "rsuite";
 import NotFoundPage from "./components/404/NotFoundPage";
+import store from "./components/redux/store";
 
 function App() {
     const path = useLocation().pathname;
@@ -47,11 +46,11 @@ function App() {
 }
 
 const AppContainer = () => (
-    // <Provider>
+    <Provider store={store}>
         <BrowserRouter>
             <App />
         </BrowserRouter>
-    // </Provider>
+    </Provider>
 );
 
 export default AppContainer;

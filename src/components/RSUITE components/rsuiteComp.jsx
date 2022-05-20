@@ -1,7 +1,5 @@
-import {Button, ButtonToolbar, Form, Input, Schema} from "rsuite";
+import {Button, ButtonToolbar, Form, Input, Schema, } from "rsuite";
 import React from "react";
-import {RouteConst} from "../../common/RouteConst";
-import {useLocation} from "react-router-dom";
 
 
 const Textarea = React.forwardRef((props, ref) => <Input {...props} as="textarea" ref={ref} />);
@@ -12,9 +10,8 @@ export const model = Schema.Model({
 });
 
 export const instanceForm = (
-    <div>
-    <Form>
-        <Form.Group controlId="name">
+    <Form model={model}>
+        <Form.Group>
             <Form.ControlLabel>Username</Form.ControlLabel>
             <Form.Control name="name" />
             <Form.HelpText>Username is required</Form.HelpText>
@@ -34,12 +31,10 @@ export const instanceForm = (
         </Form.Group>
         <Form.Group>
             <ButtonToolbar>
-                <Button appearance="primary">Submit</Button>
-                <Button appearance="default">Cancel</Button>
+                <Button appearance="primary" type={"submit"}>Submit</Button>
             </ButtonToolbar>
         </Form.Group>
     </Form>
-    </div>
 );
 
 
@@ -50,7 +45,7 @@ export function UsernameField() {
         <div>
         <Form.Group controlId="name">
             <Form.ControlLabel>Username</Form.ControlLabel>
-            <Form.Control name="name" rule={nameRule} />
+            <Form.Control name="name" className="hello" rule={nameRule} />
         </Form.Group>
         </div>
     );
