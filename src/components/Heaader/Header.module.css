@@ -26,7 +26,7 @@ nav:hover {
     display: flex;
     justify-content: space-evenly;
     width: 40%;
-    margin-left: 20px;
+    margin-left: 40px;
 }
 
 .navRight {
@@ -45,7 +45,7 @@ nav:hover {
 }
 
 .logButt {
-    margin: 0 25px;
+    margin-right: 25px;
 }
 
 .link:hover, .logButt:hover {
