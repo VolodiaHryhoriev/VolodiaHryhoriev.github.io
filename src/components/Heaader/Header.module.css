@@ -16,6 +16,7 @@ nav {
     color: black;
     z-index: 2;
     white-space: nowrap;
+    cursor: pointer;
 }
 
 nav:hover {

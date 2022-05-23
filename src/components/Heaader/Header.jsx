@@ -2,9 +2,10 @@ import styles from "./Header.module.css";
 import { RouteConst } from "../../common/RouteConst";
 import "rsuite/dist/rsuite.min.css";
 import React, {useState} from "react";
-import {Button, ButtonToolbar, Toggle} from "rsuite";
+import {Toggle} from "rsuite";
 import {Link as Link1} from 'react-scroll';
 import {Link as Link2, useLocation} from "react-router-dom"
+
 
 const Header = () => {
     const path = useLocation().pathname;
@@ -17,6 +18,7 @@ const Header = () => {
         }
     };
 
+
     const instanceNavBut = (
         <div className={styles.editMode}>
            <p>Edit</p> <Toggle onClick={toggleBut} />
@@ -26,13 +28,13 @@ const Header = () => {
     const [toggle, setToggle] = useState({
         isEditable: true,
     })
+
     function toggleBut () {
         setToggle({
             isEditable: !toggle.isEditable
         })
         let editField = document.querySelectorAll(".editableText");
-         console.log(toggle.isEditable)
-        return editField.forEach(element => element.contentEditable = toggle.isEditable )
+        editField.forEach(element => element.contentEditable = toggle.isEditable );
     }
 
     return (

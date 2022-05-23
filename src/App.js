@@ -14,8 +14,10 @@ import Admin from "./components/admin/Admin"
 import {Login} from "./components/login/login"
 import NotFoundPage from "./components/404/NotFoundPage";
 import store from "./components/redux/store";
+import PrivateRoute from "./components/HOC/PrivateRoute";
 
 function App() {
+    const user = JSON.parse(localStorage.getItem("user"));
     const path = useLocation().pathname;
     const showNavbar = () => {
         switch (path) {
@@ -33,7 +35,13 @@ function App() {
         <Routes>
             <Route path={RouteConst.CV} element={<CV />} />
             <Route path={RouteConst.LOGIN} element={<Login />} />
+
+            <Route element={<PrivateRoute
+                isAllowed={user?.role === "admin"}
+            />}>
             <Route path={RouteConst.ADMIN} element={<Admin />} />
+        </Route>
+
             <Route path={RouteConst.NOT_FOUND_PAGE} element={<NotFoundPage />} />
 
 

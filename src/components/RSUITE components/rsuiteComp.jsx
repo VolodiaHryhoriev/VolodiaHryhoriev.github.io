@@ -1,5 +1,6 @@
 import {Button, ButtonToolbar, Form, Input, Schema, } from "rsuite";
 import React from "react";
+import styles from "../Heaader/Header.module.css";
 
 
 const Textarea = React.forwardRef((props, ref) => <Input {...props} as="textarea" ref={ref} />);
@@ -14,12 +15,15 @@ export const instanceForm = (
         <Form.Group>
             <Form.ControlLabel>Username</Form.ControlLabel>
             <Form.Control name="name" />
-            <Form.HelpText>Username is required</Form.HelpText>
+            <br/>
+            <Form.HelpText tooltip>Username is required</Form.HelpText>
         </Form.Group>
         <Form.Group controlId="email">
             <Form.ControlLabel>Email</Form.ControlLabel>
             <Form.Control name="email" type="email" />
+            <br/>
             <Form.HelpText tooltip>Email is required</Form.HelpText>
+
         </Form.Group>
         <Form.Group controlId="textarea">
             <Form.ControlLabel>Textarea</Form.ControlLabel>
@@ -57,5 +61,7 @@ export function UsernameField() {
         </div>
     );
 }
+
+
 
 

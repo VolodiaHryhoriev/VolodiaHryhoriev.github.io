@@ -4,12 +4,51 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCode } from "@fortawesome/free-solid-svg-icons";
 import { faHtml5, faCss3Alt, faReact, faGithub, faBootstrap, faLinkedinIn, faFacebookF } from '@fortawesome/free-brands-svg-icons'
 import {instanceForm} from "../RSUITE components/rsuiteComp";
-import {Form} from "rsuite";
+import {ButtonToolbar, Form} from "rsuite";
 import "rsuite/dist/rsuite.min.css";
 import ReactTypingEffect from 'react-typing-effect';
 import Tilt from 'react-tilt'
+import {useLocation} from "react-router-dom";
+import {RouteConst} from "../../common/RouteConst";
+import {useEffect, useState} from "react";
+import {uploadFileToFB} from "../API/firebaseCalls";
 
 const CV = () => {
+
+    const [img, setImg] = useState();
+
+
+    const uploadImg = (e) => {
+        e.preventDefault();
+        const imgFile = e.target[0].files[0];
+        if (!imgFile) {
+            return
+        }
+        uploadFileToFB(imgFile, setImg);
+    }
+
+    const imgButInstance = (
+        <form action="" onSubmit={uploadImg}>
+            <ButtonToolbar className={styles.editImgBut}>
+                <input type="file"/>
+                <button type="submit">Set Image</button>
+            </ButtonToolbar>
+        </form>
+    )
+
+
+
+
+    const path = useLocation().pathname;
+    const showImgBut = () => {
+        switch (path) {
+            case RouteConst.ADMIN:
+                return true;
+            default:
+                return false;
+        }
+    }
+
     return (
         <div className={styles.container}>
             <div id="main" className={styles.main}>
@@ -18,7 +57,10 @@ const CV = () => {
                 <h1 spellCheck="false">I am <br/> Volodymyr Hryhoriev</h1>
                     <p><ReactTypingEffect text={"Front-end Developer."}/></p>
                 </div>
-                <Tilt className="Tilt" options={{max: 20, scale: 1.01,}}><img src={profileImg} alt="profile Image" className={styles.profileLogo}/></Tilt>
+                <div>
+                <Tilt className="Tilt" options={{max: 20, scale: 1.01,}}><img src={img === undefined ? profileImg : img} alt="profile Image" className={styles.profileLogo}/></Tilt>
+                    {showImgBut() && imgButInstance}
+            </div>
             </div>
 
             <div id="aboutMe" className={styles.aboutMe}>
@@ -58,9 +100,7 @@ const CV = () => {
             <div id="contact" className={styles.contact}>
                 <h1>C<span className={styles.textName}>ontac</span>t</h1>
                 <Form>
-                    <Form.Group>
-                        {instanceForm}
-                    </Form.Group>
+                        <div className={styles.contactInp}>{instanceForm}</div>
                 </Form>
             </div>
             <div className={styles.footer}>
