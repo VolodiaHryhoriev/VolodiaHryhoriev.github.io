@@ -1,13 +1,21 @@
 import styles from "./Header.module.css";
 import { RouteConst } from "../../common/RouteConst";
 import "rsuite/dist/rsuite.min.css";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Toggle} from "rsuite";
 import {Link as Link1} from 'react-scroll';
 import {Link as Link2, useLocation} from "react-router-dom"
-
+import {editDataFirebase, editInfoFirebase} from "../API/firebaseCalls";
+import {useDispatch, useSelector} from "react-redux";
+import {getEditData} from "../actionCreator/actionLogin";
 
 const Header = () => {
+    const editData = useSelector(
+        (state) => state.loginReducer.data
+    )
+    const dispatch = useDispatch();
+const getEditDataThunk = () => dispatch(getEditData());
+
     const path = useLocation().pathname;
     const showEditBut = () => {
         switch (path) {
@@ -17,7 +25,6 @@ const Header = () => {
                 return false;
         }
     };
-
 
     const instanceNavBut = (
         <div className={styles.editMode}>
@@ -29,13 +36,27 @@ const Header = () => {
         isEditable: true,
     })
 
+useEffect(() => {
+getEditDataThunk();
+})
+
     function toggleBut () {
+        editData?.map((item) => {
+            editDataFirebase(item.id,{
+            info: document.querySelector("#info").innerHTML,
+            experience: document.querySelector("#experience").innerHTML,
+            education: document.querySelector("#educationFirst").innerHTML,
+            // educationSecond: document.querySelector("#educationSecond").innerHTML,
+        })
+    })
         setToggle({
             isEditable: !toggle.isEditable
         })
         let editField = document.querySelectorAll(".editableText");
-        editField.forEach(element => element.contentEditable = toggle.isEditable );
+          editField.forEach(element => element.contentEditable = toggle.isEditable );
     }
+
+
 
     return (
         <div>

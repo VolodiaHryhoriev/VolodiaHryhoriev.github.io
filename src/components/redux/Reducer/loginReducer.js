@@ -1,6 +1,7 @@
 import {actionsLoginTypes} from "../../actionCreator/actionLogin";
 const initialState = {
     login: [],
+    data: [],
     errorLogin: "",
 }
 
@@ -16,6 +17,12 @@ const loginReducer = (state=initialState, action) => {
             return {
                 ...state,
                 errorUsers: action.payload
+            }
+        case actionsLoginTypes.SET_DATA:
+            return {
+                ...state,
+                data: action.payload,
+                errorUsers: ""
             }
         default:
             return state

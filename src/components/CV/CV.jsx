@@ -12,12 +12,14 @@ import {useLocation} from "react-router-dom";
 import {RouteConst} from "../../common/RouteConst";
 import {useEffect, useState} from "react";
 import {uploadFileToFB} from "../API/firebaseCalls";
+import {getEditData} from "../actionCreator/actionLogin";
+import {useDispatch, useSelector} from "react-redux";
 
 const CV = () => {
-
     const [img, setImg] = useState();
-
-
+    const dispatch = useDispatch();
+    const getEditDataThunk = () => dispatch(getEditData());
+    const editData = useSelector((state) => state.loginReducer.data);
     const uploadImg = (e) => {
         e.preventDefault();
         const imgFile = e.target[0].files[0];
@@ -25,7 +27,14 @@ const CV = () => {
             return
         }
         uploadFileToFB(imgFile, setImg);
+        console.log()
     }
+
+    useEffect(() => {
+        getEditDataThunk();
+    }, [])
+
+
 
     const imgButInstance = (
         <form action="" onSubmit={uploadImg}>
@@ -35,9 +44,6 @@ const CV = () => {
             </ButtonToolbar>
         </form>
     )
-
-
-
 
     const path = useLocation().pathname;
     const showImgBut = () => {
@@ -53,12 +59,13 @@ const CV = () => {
         <div className={styles.container}>
             <div id="main" className={styles.main}>
                 <div className={styles.mainText}>
-                    <h4>Hello there,</h4>
+                    <h4 id="editableText">Hello there,</h4>
                 <h1 spellCheck="false">I am <br/> Volodymyr Hryhoriev</h1>
                     <p><ReactTypingEffect text={"Front-end Developer."}/></p>
                 </div>
                 <div>
                 <Tilt className="Tilt" options={{max: 20, scale: 1.01,}}><img src={img === undefined ? profileImg : img} alt="profile Image" className={styles.profileLogo}/></Tilt>
+
                     {showImgBut() && imgButInstance}
             </div>
             </div>
@@ -68,20 +75,19 @@ const CV = () => {
                 <div className={styles.aboutMeBlock}>
                     <div className={styles.info}>
                         <h3>Info</h3>
-                        <p className="editableText" contentEditable="false" spellCheck="false">I'm a person who has a big interest in programming and tries to improve skills, that's why I am  ready to learn and gain experience.
-                            Frontend developer, with experience in SPA using React, Redux, Firebase, HTML, CSS, JS.
-                            Also, I really love the teamwork, as in this way you can achieve the final success in minimal time.</p>
+                        <p id="info" className="editableText" spellCheck="false">
+                            {editData.map((item => item.info))}
+                        </p>
                     </div>
                     <div className={styles.experience}>
                         <h3>Experience</h3>
-                        <p className="editableText" contentEditable="false" spellCheck="false">React development using redux, react-redux, react-router-dom, redux-thunk Axios, React Suite. Bug fixing, refactoring into TypeScript,
-                            login form creation using Firebase.</p>
+                        <p id="experience" className="editableText"  spellCheck="false">{editData.map((item => item.experience))}</p>
                     </div>
                     <div className={styles.education}>
                         <h3>Education</h3>
-                        <p className="editableText" contentEditable="false" spellCheck="false">Front-end Development <br/>
-                            (React / Redux / TypeScript / Firebase) in Logos IT Academy 2021-2022.</p>
-                        <p className="editableText" contentEditable="false" spellCheck="false">National University “Lviv Polytechnic” Incomplete higher education, Faculty of Transport Technology.</p>
+                        <p id="educationFirst" className="editableText" spellCheck="false">{editData.map((item => item.education))}</p>
+
+                        {/*<p id="educationSecond" className="editableText"  spellCheck="false">{editData.map((item => item.educationSecond))}</p>*/}
                     </div>
                 </div>
             </div>

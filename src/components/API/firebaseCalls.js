@@ -1,4 +1,4 @@
-import {onSnapshot, collection} from "firebase/firestore"
+import {onSnapshot, collection, doc, setDoc, addDoc} from "firebase/firestore"
 import db, {storage} from "../../firebase"
 import {actionsLogin} from "../actionCreator/actionLogin";
 import {ref, uploadBytesResumable, getDownloadURL} from "firebase/storage"
@@ -14,6 +14,20 @@ export const getLoginFirebase = (dispatch) => {
     })
 }
 
+export const getInfoFirebase = (dispatch) => {
+    const collectionRef = collection(db, "editData");
+    onSnapshot(collectionRef, (snapshot) => {
+        dispatch(
+            actionsLogin.setEditData(
+                snapshot.docs.map((doc) => ({
+                    ...doc.data(),
+                    id: doc.id,
+                }))
+            )
+        );
+    });
+};
+
 export const uploadFileToFB = (imgFile, setImg) => {
     const storageRef = ref(storage, `/images/${imgFile.name}`);
     const uploadData = uploadBytesResumable(storageRef, imgFile);
@@ -26,3 +40,8 @@ export const uploadFileToFB = (imgFile, setImg) => {
         }
     );
 }
+
+export const editDataFirebase = async (id, item) => {
+    const docRef = doc(db, "editData", id);
+    await setDoc(docRef, item);
+};

@@ -20,7 +20,7 @@ export const Login = () => {
         getLoginThunk();
     }, [])
 
-        const loginCheck = (setAdmin) => {
+        const loginCheck = () => {
         let userNameValue = document.querySelector("#name");
         let userPasswordValue = document.querySelector("#password");
         login.map((item) => {
