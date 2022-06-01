@@ -1,13 +1,14 @@
 import styles from "./Header.module.css";
 import { RouteConst } from "../../common/RouteConst";
 import "rsuite/dist/rsuite.min.css";
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Toggle} from "rsuite";
 import {Link as Link1} from 'react-scroll';
 import {Link as Link2, useLocation} from "react-router-dom"
 import {editDataFirebase, editInfoFirebase} from "../API/firebaseCalls";
 import {useDispatch, useSelector} from "react-redux";
 import {getEditData} from "../actionCreator/actionLogin";
+import isEditable from "../../context/context";
 
 const Header = () => {
     const editData = useSelector(
@@ -26,35 +27,40 @@ const getEditDataThunk = () => dispatch(getEditData());
         }
     };
 
+    function toggleBut () {
+        editData?.map((item) => {
+            editDataFirebase(item.id,{
+                info: document.querySelector("#info").innerHTML,
+                experience: document.querySelector("#experience").innerHTML,
+                education: document.querySelector("#educationFirst").innerHTML,
+            })
+        })
+        setToggle({
+            isEditable: !toggle.isEditable
+        })
+        let editField = document.querySelectorAll(".editableText");
+        editField.forEach(element => element.contentEditable = toggle.isEditable );
+    }
+
     const instanceNavBut = (
         <div className={styles.editMode}>
            <p>Edit</p> <Toggle onClick={toggleBut} />
         </div>
     );
 
-    const [toggle, setToggle] = useState({
-        isEditable: true,
-    })
 
 useEffect(() => {
 getEditDataThunk();
 })
 
-    function toggleBut () {
-        editData?.map((item) => {
-            editDataFirebase(item.id,{
-            info: document.querySelector("#info").innerHTML,
-            experience: document.querySelector("#experience").innerHTML,
-            education: document.querySelector("#educationFirst").innerHTML,
-            // educationSecond: document.querySelector("#educationSecond").innerHTML,
-        })
-    })
-        setToggle({
-            isEditable: !toggle.isEditable
-        })
-        let editField = document.querySelectorAll(".editableText");
-          editField.forEach(element => element.contentEditable = toggle.isEditable );
-    }
+const {toggle, setToggle} = useContext(isEditable);
+
+    // useEffect(() => {
+    //     // if (toggle.isEditable)
+    //     // console.log(toggle.isEditable)
+    // }, [toggle])
+
+
 
 
 

@@ -11,15 +11,19 @@ import Tilt from 'react-tilt'
 import {useLocation} from "react-router-dom";
 import {RouteConst} from "../../common/RouteConst";
 import {useEffect, useState} from "react";
-import {uploadFileToFB} from "../API/firebaseCalls";
+import {setImgFirebase, uploadFileToFB} from "../API/firebaseCalls";
 import {getEditData} from "../actionCreator/actionLogin";
 import {useDispatch, useSelector} from "react-redux";
+import {useContext} from "react";
+import isEditable from "../../context/context";
 
 const CV = () => {
+    const {toggle, setToggle} = useContext(isEditable);
     const [img, setImg] = useState();
     const dispatch = useDispatch();
     const getEditDataThunk = () => dispatch(getEditData());
     const editData = useSelector((state) => state.loginReducer.data);
+    const setImage = useSelector((state) => state.loginReducer.image);
     const uploadImg = (e) => {
         e.preventDefault();
         const imgFile = e.target[0].files[0];
@@ -27,47 +31,44 @@ const CV = () => {
             return
         }
         uploadFileToFB(imgFile, setImg);
-        console.log()
     }
+
+    useEffect(() => {
+        setImgFirebase()
+    }, [img])
 
     useEffect(() => {
         getEditDataThunk();
     }, [])
 
 
-
-    const imgButInstance = (
-        <form action="" onSubmit={uploadImg}>
-            <ButtonToolbar className={styles.editImgBut}>
-                <input type="file"/>
-                <button type="submit">Set Image</button>
-            </ButtonToolbar>
-        </form>
-    )
-
-    const path = useLocation().pathname;
-    const showImgBut = () => {
-        switch (path) {
-            case RouteConst.ADMIN:
-                return true;
-            default:
-                return false;
+    useEffect(() => {
+        if (toggle.isEditable) {
+            document.querySelector("#disableBut").style.display = "none"
+        } else {
+            document.querySelector("#disableBut").style.display = "block"
         }
-    }
+    }, [toggle])
+
 
     return (
         <div className={styles.container}>
             <div id="main" className={styles.main}>
                 <div className={styles.mainText}>
                     <h4 id="editableText">Hello there,</h4>
-                <h1 spellCheck="false">I am <br/> Volodymyr Hryhoriev</h1>
+                    <h1 spellCheck="false">I am <br/> Volodymyr Hryhoriev</h1>
                     <p><ReactTypingEffect text={"Front-end Developer."}/></p>
                 </div>
                 <div>
-                <Tilt className="Tilt" options={{max: 20, scale: 1.01,}}><img src={img === undefined ? profileImg : img} alt="profile Image" className={styles.profileLogo}/></Tilt>
+                    <Tilt className="Tilt" options={{max: 20, scale: 1.01,}}><img src={img === undefined ? profileImg : img} alt="profile Image" className={styles.profileLogo}/></Tilt>
 
-                    {showImgBut() && imgButInstance}
-            </div>
+                    <form action="" onSubmit={uploadImg}>
+                        <ButtonToolbar className={styles.editImgBut} id="disableBut">
+                            <input type="file"/>
+                            <button type="submit" >Set Image</button>
+                        </ButtonToolbar>
+                    </form>
+                </div>
             </div>
 
             <div id="aboutMe" className={styles.aboutMe}>
@@ -106,13 +107,13 @@ const CV = () => {
             <div id="contact" className={styles.contact}>
                 <h1>C<span className={styles.textName}>ontac</span>t</h1>
                 <Form>
-                        <div className={styles.contactInp}>{instanceForm}</div>
+                    <div className={styles.contactInp}>{instanceForm}</div>
                 </Form>
             </div>
             <div className={styles.footer}>
                 <h3>Vol<span className={styles.textName}>odymyr Hryho</span>riev</h3>
                 <div className={styles.footerIcons}>
-                    <a href="final-project/src/components/CV/CV"><FontAwesomeIcon className={styles.iconElement} icon={faLinkedinIn} /></a>
+                    <a href="https://www.linkedin.com/in/volodia-hryhoriev-158100215/"><FontAwesomeIcon className={styles.iconElement} icon={faLinkedinIn} /></a>
                     <a href="https://github.com/VolodiaHryhoriev"><FontAwesomeIcon className={styles.iconElement} icon={faGithub} /></a>
                     <a href="https://www.facebook.com/profile.php?id=100011629595872"><FontAwesomeIcon className={styles.iconElement} icon={faFacebookF} /></a>
                 </div>

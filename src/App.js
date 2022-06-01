@@ -15,10 +15,15 @@ import {Login} from "./components/login/login"
 import NotFoundPage from "./components/404/NotFoundPage";
 import store from "./components/redux/store";
 import PrivateRoute from "./components/HOC/PrivateRoute";
+import {editDataFirebase} from "./components/API/firebaseCalls";
+import {useContext, useState} from "react";
+import isEditable from "../src/context/context";
 
 function App() {
     const user = JSON.parse(localStorage.getItem("user"));
     const path = useLocation().pathname;
+    const {toggle, setToggle} = useContext(isEditable);
+
     const showNavbar = () => {
         switch (path) {
             case RouteConst.CV:
@@ -29,7 +34,7 @@ function App() {
         }
     };
 
-  return (
+    return (
     <div className="App">
         {showNavbar() && <Header />}
         <Routes>

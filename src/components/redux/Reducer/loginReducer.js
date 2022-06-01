@@ -2,6 +2,7 @@ import {actionsLoginTypes} from "../../actionCreator/actionLogin";
 const initialState = {
     login: [],
     data: [],
+    image: [],
     errorLogin: "",
 }
 
@@ -23,6 +24,12 @@ const loginReducer = (state=initialState, action) => {
                 ...state,
                 data: action.payload,
                 errorUsers: ""
+            }
+        case actionsLoginTypes.SET_IMAGE:
+            return {
+                ...state,
+                errorUsers: "",
+                image: action.payload
             }
         default:
             return state
