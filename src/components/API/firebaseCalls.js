@@ -48,19 +48,8 @@ export const editDataFirebase = async (id, item) => {
 };
 
 
- export const setImgFirebase = async (id, ) => {
-//     const storage = getStorage();
-//     const storageRef = ref(storage);
-//     const imagesRef = ref(storage, `images/${imgFile.name}`);
-//     const spaceRef = ref(storage, 'images/лаб5 скрін.png');
-//     console.log(imagesRef)
-//      const spaceRef = ref(storage, 'images/лаб5 скрін.png');
-//      const storageRef = collection(db,"imgLink").setDoc("imgLink" :spaceRef);
-//      // console.log(storageRef._location.path_)
-//      // const docRef = doc(db, "imgLink", id);
-//      // await setDoc(docRef, storageRef._location.path_);
-//      console.log( storageRef )
-
+ export const setImgFirebase = async (data, img) => {
+     editDataFirebase(data[0].id, {...data[0], image: img});
  };
 
 

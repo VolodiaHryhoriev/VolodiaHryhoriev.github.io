@@ -1,5 +1,4 @@
 import styles from "./CV.module.css"
-import profileImg from "../../images/profileImg.jpg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCode } from "@fortawesome/free-solid-svg-icons";
 import { faHtml5, faCss3Alt, faReact, faGithub, faBootstrap, faLinkedinIn, faFacebookF } from '@fortawesome/free-brands-svg-icons'
@@ -8,8 +7,6 @@ import {ButtonToolbar, Form} from "rsuite";
 import "rsuite/dist/rsuite.min.css";
 import ReactTypingEffect from 'react-typing-effect';
 import Tilt from 'react-tilt'
-import {useLocation} from "react-router-dom";
-import {RouteConst} from "../../common/RouteConst";
 import {useEffect, useState} from "react";
 import {setImgFirebase, uploadFileToFB} from "../API/firebaseCalls";
 import {getEditData} from "../actionCreator/actionLogin";
@@ -34,13 +31,12 @@ const CV = () => {
     }
 
     useEffect(() => {
-        setImgFirebase()
+        setImgFirebase(editData, img)
     }, [img])
 
     useEffect(() => {
         getEditDataThunk();
     }, [])
-
 
     useEffect(() => {
         if (toggle.isEditable) {
@@ -60,7 +56,8 @@ const CV = () => {
                     <p><ReactTypingEffect text={"Front-end Developer."}/></p>
                 </div>
                 <div>
-                    <Tilt className="Tilt" options={{max: 20, scale: 1.01,}}><img src={img === undefined ? profileImg : img} alt="profile Image" className={styles.profileLogo}/></Tilt>
+                    <Tilt className="Tilt" options={{max: 20, scale: 1.01,}}><img src={ img === undefined ? editData.map((item => item.image)): img}
+                        alt="profile Image" className={styles.profileLogo}/></Tilt>
 
                     <form action="" onSubmit={uploadImg}>
                         <ButtonToolbar className={styles.editImgBut} id="disableBut">
@@ -87,8 +84,6 @@ const CV = () => {
                     <div className={styles.education}>
                         <h3>Education</h3>
                         <p id="educationFirst" className="editableText" spellCheck="false">{editData.map((item => item.education))}</p>
-
-                        {/*<p id="educationSecond" className="editableText"  spellCheck="false">{editData.map((item => item.educationSecond))}</p>*/}
                     </div>
                 </div>
             </div>

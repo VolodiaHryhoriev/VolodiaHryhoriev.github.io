@@ -1,11 +1,11 @@
 import styles from "./Header.module.css";
 import { RouteConst } from "../../common/RouteConst";
 import "rsuite/dist/rsuite.min.css";
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect} from "react";
 import {Toggle} from "rsuite";
 import {Link as Link1} from 'react-scroll';
 import {Link as Link2, useLocation} from "react-router-dom"
-import {editDataFirebase, editInfoFirebase} from "../API/firebaseCalls";
+import {editDataFirebase} from "../API/firebaseCalls";
 import {useDispatch, useSelector} from "react-redux";
 import {getEditData} from "../actionCreator/actionLogin";
 import isEditable from "../../context/context";
@@ -27,12 +27,15 @@ const getEditDataThunk = () => dispatch(getEditData());
         }
     };
 
+
     function toggleBut () {
+
         editData?.map((item) => {
             editDataFirebase(item.id,{
                 info: document.querySelector("#info").innerHTML,
                 experience: document.querySelector("#experience").innerHTML,
                 education: document.querySelector("#educationFirst").innerHTML,
+                image: document.querySelector("img").src
             })
         })
         setToggle({
