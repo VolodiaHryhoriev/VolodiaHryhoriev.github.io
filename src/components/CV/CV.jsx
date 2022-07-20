@@ -21,6 +21,8 @@ const CV = () => {
     const getEditDataThunk = () => dispatch(getEditData());
     const editData = useSelector((state) => state.loginReducer.data);
     const setImage = useSelector((state) => state.loginReducer.image);
+
+
     const uploadImg = (e) => {
         e.preventDefault();
         const imgFile = e.target[0].files[0];
@@ -29,6 +31,8 @@ const CV = () => {
         }
         uploadFileToFB(imgFile, setImg);
     }
+
+
 
     useEffect(() => {
         setImgFirebase(editData, img)
@@ -108,7 +112,7 @@ const CV = () => {
             <div className={styles.footer}>
                 <h3>Vol<span className={styles.textName}>odymyr Hryho</span>riev</h3>
                 <div className={styles.footerIcons}>
-                    <a href="https://www.linkedin.com/in/volodia-hryhoriev-158100215/"><FontAwesomeIcon className={styles.iconElement} icon={faLinkedinIn} /></a>
+                    <a href="https://www.linkedin.com/in/volodymyr-hryhoriev-158100215/"><FontAwesomeIcon className={styles.iconElement} icon={faLinkedinIn} /></a>
                     <a href="https://github.com/VolodiaHryhoriev"><FontAwesomeIcon className={styles.iconElement} icon={faGithub} /></a>
                     <a href="https://www.facebook.com/profile.php?id=100011629595872"><FontAwesomeIcon className={styles.iconElement} icon={faFacebookF} /></a>
                 </div>
