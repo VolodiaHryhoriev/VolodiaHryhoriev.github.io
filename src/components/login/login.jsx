@@ -45,7 +45,7 @@ export const Login = () => {
         <div>
         <Form className={styles.loginBlock} model={model}>
             <div className={styles.loginForm}>
-                <h3>Please<span className={styles.textName}> complete login </span> form</h3>
+                <h3>Please complete login  form to access <span className={styles.textName}> the admin page</span></h3>
                 <UsernameField />
                 <PasswordField />
                 <p id="incorrect" className={styles.incorrect}>Login or password were incorrect</p>
