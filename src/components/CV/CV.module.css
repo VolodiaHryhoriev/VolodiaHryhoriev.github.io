@@ -142,6 +142,7 @@ img {
 .iconElement {
     font-size: 50px;
     padding: 10px;
+    color: black;
 }
 
 
@@ -164,9 +165,6 @@ img {
     margin-top: 50px;
 }
 
-.footerIcons a {
-    color: black;
-}
 
 .editableText {
     text-decoration: none;

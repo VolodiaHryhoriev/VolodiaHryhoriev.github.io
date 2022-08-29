@@ -1,6 +1,6 @@
 import styles from "./CV.module.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCode } from "@fortawesome/free-solid-svg-icons";
+import { faCode, faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import { faHtml5, faCss3Alt, faReact, faGithub, faBootstrap, faLinkedinIn, faFacebookF } from '@fortawesome/free-brands-svg-icons'
 import {instanceForm} from "../RSUITE components/rsuiteComp";
 import {ButtonToolbar, Form} from "rsuite";
@@ -13,6 +13,8 @@ import {getEditData} from "../actionCreator/actionLogin";
 import {useDispatch, useSelector} from "react-redux";
 import {useContext} from "react";
 import isEditable from "../../context/context";
+import {Route, useNavigate} from "react-router-dom";
+import {RouteConst} from "../../common/RouteConst";
 
 const CV = () => {
     const {toggle, setToggle} = useContext(isEditable);
@@ -21,6 +23,7 @@ const CV = () => {
     const getEditDataThunk = () => dispatch(getEditData());
     const editData = useSelector((state) => state.loginReducer.data);
     const setImage = useSelector((state) => state.loginReducer.image);
+    const navigate = useNavigate();
 
 
     const uploadImg = (e) => {
@@ -49,6 +52,10 @@ const CV = () => {
             document.querySelector("#disableBut").style.display = "block"
         }
     }, [toggle])
+
+    const navigateToShop = () => {
+        navigate(RouteConst.SHOP)
+    }
 
 
     return (
@@ -111,6 +118,7 @@ const CV = () => {
             </div>
             <div className={styles.footer}>
                 <h3>Vol<span className={styles.textName}>odymyr Hryho</span>riev</h3>
+                <a onClick={navigateToShop}><FontAwesomeIcon className={styles.iconElement} icon={faBagShopping} /></a>
                 <div className={styles.footerIcons}>
                     <a href="https://www.linkedin.com/in/volodymyr-hryhoriev-158100215/"><FontAwesomeIcon className={styles.iconElement} icon={faLinkedinIn} /></a>
                     <a href="https://github.com/VolodiaHryhoriev"><FontAwesomeIcon className={styles.iconElement} icon={faGithub} /></a>
