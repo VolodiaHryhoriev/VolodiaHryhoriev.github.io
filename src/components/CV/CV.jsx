@@ -61,12 +61,14 @@ const CV = () => {
     return (
         <div className={styles.container}>
             <div id="main" className={styles.main}>
+                <div className={styles.mainContainer}>
                 <div className={styles.mainText}>
                     <h4 id="editableText">Hello there,</h4>
                     <h1 spellCheck="false">I am <br/> Volodymyr Hryhoriev</h1>
-                    <p><ReactTypingEffect text={"Front-end Developer."}/></p>
+                    <p><ReactTypingEffect className={styles.zxc} text={"Front-end Developer."}/></p>
                 </div>
-                <div>
+                </div>
+                    <div>
                     <Tilt className="Tilt" options={{max: 20, scale: 1.01,}}><img src={ img === undefined ? editData.map((item => item.image)): img}
                         alt="profile Image" className={styles.profileLogo}/></Tilt>
 
@@ -118,7 +120,6 @@ const CV = () => {
             </div>
             <div className={styles.footer}>
                 <h3>Vol<span className={styles.textName}>odymyr Hryho</span>riev</h3>
-                <a onClick={navigateToShop}><FontAwesomeIcon className={styles.iconElement} icon={faBagShopping} /></a>
                 <div className={styles.footerIcons}>
                     <a href="https://www.linkedin.com/in/volodymyr-hryhoriev-158100215/"><FontAwesomeIcon className={styles.iconElement} icon={faLinkedinIn} /></a>
                     <a href="https://github.com/VolodiaHryhoriev"><FontAwesomeIcon className={styles.iconElement} icon={faGithub} /></a>

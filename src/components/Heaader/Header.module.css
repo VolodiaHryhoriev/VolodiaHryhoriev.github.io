@@ -12,16 +12,13 @@ nav {
     width: 100%;
     position: fixed;
     top: 0;
-    opacity: 0.5;
+    opacity: 1;
     color: black;
     z-index: 2;
     white-space: nowrap;
     cursor: pointer;
 }
 
-nav:hover {
-    opacity: 1;
-}
 
 .navLeft {
     display: flex;
