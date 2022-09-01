@@ -18,9 +18,6 @@
     letter-spacing: .15em;
 }
 
-.mainText h1, .mainText h4 {
-    width: 60%;
-}
 
 .main p {
     font-size: 30px;
@@ -38,19 +35,19 @@
 
     .mainText {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
     }
 
-    /*.zxc {*/
-    /*    display: flex;*/
-    /*    justify-content: flex-start;*/
-    /*}*/
-
-
     .mainText p {
         font-size: 20px;
+        width: 65%;
     }
+
+    .mainText h1, .mainText h4{
+        width: 65%;
+    }
+
 
     .mainContainer {
         display: flex;
@@ -58,11 +55,6 @@
         flex-direction: column;
     }
 
-
-    /*.mainText div  {*/
-    /*    display: flex;*/
-    /*    justify-content: flex-start;*/
-    /*}*/
 
     .main img {
         margin-top: 150px;

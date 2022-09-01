@@ -65,7 +65,7 @@ const CV = () => {
                 <div className={styles.mainText}>
                     <h4 id="editableText">Hello there,</h4>
                     <h1 spellCheck="false">I am <br/> Volodymyr Hryhoriev</h1>
-                    <p><ReactTypingEffect className={styles.zxc} text={"Front-end Developer."}/></p>
+                    <p><ReactTypingEffect text={"Front-end Developer."}/></p>
                 </div>
                 </div>
                     <div>
